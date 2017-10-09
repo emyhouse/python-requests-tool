@@ -20,3 +20,12 @@ class RequestClient(object):
             r = requests.get(uri, params=payload, headers=headers)
         result = r.json()
         return result
+
+    def post(self, api_addr, payload):
+        headers = {
+            "content-type": "application/json",
+            "authorization": self.token
+        }
+        uri = "{0}{1}".format(self.url, api_addr)
+        result = requests.post(req_url, data=payload, headers=headers)
+        return result.json()
